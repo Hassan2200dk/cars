@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-public class Member {
+public class Member extends AdminDetails {
 
 
 
@@ -18,7 +18,7 @@ public class Member {
     @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column()
     private String password;
 
     @Column(nullable = false)

@@ -3,6 +3,8 @@ package dat3.car.cars.entity;
 //I entity pakken, lav en klasse AdminDetails og paste følgende ind i klassen
 
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,7 +18,11 @@ that contains common fields and mappings and it's super simple to implement
 OBSERVE --> The base class is not an entity by itself and is NEVER used directly in queries.
  */
 @MappedSuperclass
+
+@Getter
+@Setter
 public abstract class AdminDetails {
+
     @CreationTimestamp
     protected LocalDateTime created;
     @UpdateTimestamp
