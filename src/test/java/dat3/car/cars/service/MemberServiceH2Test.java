@@ -50,7 +50,7 @@ class MemberServiceH2Test {
         for (int i = 0; i <responses.size() ; i++) {
             System.out.println(responses.get(i).getUsername());
         }
-        assertEquals(m1.getRanking(), memberResponse1.getRanking());
+        assertEquals(2, responses.size());
 
 
     }
