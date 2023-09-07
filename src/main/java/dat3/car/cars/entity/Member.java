@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -59,6 +62,17 @@ public class Member extends AdminDetails {
         this.city = city;
         this.zip = zip;
     }
+
+    @OneToMany(mappedBy = "member")
+    List<Reservation> reservations;//; = new ArrayList<>();
+
+    public void addReservation(Reservation reservation){
+        if (reservations == null){
+            reservations = new ArrayList<>();
+        }
+        reservations.add(reservation);
+    }
+
 
 
 }
