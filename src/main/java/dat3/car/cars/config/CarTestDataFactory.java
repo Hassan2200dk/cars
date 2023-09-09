@@ -1,10 +1,16 @@
 package dat3.car.cars.config;
 
 import dat3.car.cars.entity.Car;
+import dat3.car.cars.repository.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
 public class CarTestDataFactory {
+
+
+    @Autowired
+    CarRepository carRepository;
 
     private static final List<String> brands = Arrays.asList(
             "Toyota", "Honda", "Ford", "BMW", "Mercedes", "Chevrolet", "Volkswagen", "Audi", "Hyundai", "Nissan"
@@ -37,4 +43,22 @@ public class CarTestDataFactory {
         }
         return cars;
     }
+
+
+    public List<Car> getCars (String j, String k){
+
+
+        j = "Honda";
+        k = "Civic";
+
+        List<Car> cars = carRepository.findAllByBrandAndModel(j,k);
+
+        System.out.println(cars);
+
+
+        return cars;
+
+    }
+
+
 }

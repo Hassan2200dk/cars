@@ -1,5 +1,6 @@
 package dat3.car.cars.entity;
 
+import dat3.car.security.entity.UserWithRoles;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,49 +14,33 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 
-public class Member extends AdminDetails {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "USER_TYPE")
+public class Member extends UserWithRoles {
 
 
 
-    @Id
-    @Column(nullable = false)
-    private String username;
 
-    @Column()
-    private String password;
-
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
     private String street;
 
-    @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
     private String zip;
 
 
-    @Column(nullable = false)
     private boolean approved = true;
 
-    @Column(nullable = false)
     private Integer ranking = (int) (Math.random() * 100000); ;
 
 
 
     public Member(String user, String password, String email, String firstName,
                   String lastName, String street, String city, String zip) {
-        this.username = user;
-        this.password = password;
-        this.email = email;
+       super(user, password, email);
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
