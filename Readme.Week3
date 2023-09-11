@@ -1,0 +1,27 @@
+- Where and why you have used a @OneToMany annotation 
+
+En @OneToMany annotation bruges til at frembringe en (en til mange relation) mellem to entiter i en database.  Et eksempel i koden er @OneToMany(mappedBy = "car")
+    List<Reservation> reservations;            
+Dette betyder at en enkelt bil kan have mange relationer.
+
+- Where an why you have used a @ManyToOne annotation
+
+En @ManyToOne er så kontrasten hvor en entiterne har en (mange til en relation). Et eksempel er i Reservaion entiteten    
+   @ManyToOne
+    Car car;
+Har betyder det at en reservation kan have mange biler.
+
+- The purpose of the CascadeType, FetchType and mappedBy attributes you can use with one-to-many
+
+CascadeType bestemmer, hvordan ændringer forekommer i relateret entiteter. Eksempel kan være Cascade.Remove so hvis du sletter en parent entitet vil child entiteter også blive fjernet.
+FetchType bestemmer, hvordan relaterede enheder hentes fra databasen, når der forespørges på den ejerende enhed (den "en" side).
+mappedBy siger noget om hvilken entitet der er den ejernde entitet.
+
+- How/where you have (if done) added user defined queries to you repositories
+
+  Ja det gjorde jeg i en eksempel, hvor jeg skulle beregne den gennemsnitlige daglige pris.
+                      @Query(value = "SELECT AVG(pricePrDay) FROM Car")
+
+                       Double findAveragePricePrDay();
+
+                      
