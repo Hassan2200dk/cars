@@ -54,7 +54,7 @@ public class MemberResponse {
     public MemberResponse(Member m, boolean includeAll, boolean includeReservations) {
         this(m,false);
         if (includeReservations){
-            this.reservations = m.getReservations().stream().map(r -> new ReservationResponse(r) ).toList();
+            //this.reservations = m.getReservations().stream().map(r -> new ReservationResponse(r) ).toList();
         }
     }
 
