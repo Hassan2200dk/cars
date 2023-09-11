@@ -3,9 +3,11 @@ package dat3.car.cars.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dat3.car.cars.entity.Member;
+import dat3.car.cars.entity.Reservation;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,6 +25,8 @@ public class MemberResponse {
     String street;
     String city;
     String zip;
+
+    List<Reservation> reservations;
     //@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
@@ -47,5 +51,12 @@ public class MemberResponse {
             this.ranking = m.getRanking();
         }
     }
+    public MemberResponse(Member m, boolean includeAll, boolean includeReservations) {
+        this(m,false);
+        if (includeReservations){
+            this.reservations = m.getReservations().stream().map(r -> new ReservationResponse(r) ).toList();
+        }
+    }
+
 }
 

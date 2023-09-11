@@ -36,6 +36,17 @@ public class MemberService {
             responses.add(mr);
         }
         return responses;
+    }  public List<MemberResponse> getMembers2(boolean includeAll, boolean includeReservations) {
+
+        List<Member> members = memberRepository.findAll();
+
+        List<MemberResponse> responses = new ArrayList<>();
+
+        for (Member member: members){
+            MemberResponse mr = new MemberResponse(member, includeAll, includeReservations);
+            responses.add(mr);
+        }
+        return responses;
     }
 
     public MemberResponse addMember(MemberRequest body) {
